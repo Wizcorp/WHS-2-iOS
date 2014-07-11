@@ -15,8 +15,12 @@
 -(id)init {
     self = [super init];
     if(self) {
-        dispatch_queue_t centralQueue = dispatch_queue_create("jp.co.uniontool.myBeat", DISPATCH_QUEUE_SERIAL);
-        self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:centralQueue options:nil];
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+            dispatch_queue_t centralQueue = dispatch_queue_create("jp.co.uniontool.myBeat", DISPATCH_QUEUE_SERIAL);
+            self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:centralQueue options:nil];
+        } else {
+            self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
+        }
         self.whsServiceUUID = [CBUUID UUIDWithString:ServiceWhsUuid];
         self.whsCharacteristicsUUID = [CBUUID UUIDWithString:CharacteristicsWhsUuid];
         self.foundPeripherals = [[NSMutableArray alloc] init];

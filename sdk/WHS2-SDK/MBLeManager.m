@@ -15,7 +15,8 @@
 -(id)init {
     self = [super init];
     if(self) {
-        self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
+        dispatch_queue_t centralQueue = dispatch_queue_create("jp.co.uniontool.myBeat", DISPATCH_QUEUE_SERIAL);
+        self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:centralQueue options:nil];
         self.whsServiceUUID = [CBUUID UUIDWithString:ServiceWhsUuid];
         self.whsCharacteristicsUUID = [CBUUID UUIDWithString:CharacteristicsWhsUuid];
         self.foundPeripherals = [[NSMutableArray alloc] init];

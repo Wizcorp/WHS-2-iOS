@@ -1,6 +1,7 @@
 #import "MBLeManager.h"
 #import "MBWhsService.h"
 #import "MeasureReceiveProtocol.h"
+#import <UIKit/UIKit.h>
 
 @interface MBLeManager() <CBCentralManagerDelegate, CBPeripheralDelegate>
 @property (nonatomic) NSTimer *scanStopTimer;

@@ -21,6 +21,7 @@
         } else {
             self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         }
+        self.isSupport = YES;
         self.whsServiceUUID = [CBUUID UUIDWithString:ServiceWhsUuid];
         self.whsCharacteristicsUUID = [CBUUID UUIDWithString:CharacteristicsWhsUuid];
         self.foundPeripherals = [[NSMutableArray alloc] init];

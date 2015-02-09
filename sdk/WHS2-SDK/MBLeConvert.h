@@ -51,4 +51,9 @@
  */
 + (double)convertAcceleration:(unsigned char)byte;
 
+/** Return the serial
+ @param byte 1byte
+ @return serial as string
+ */
++ (NSString *)convertSerial:(unsigned char)byte;
 @end

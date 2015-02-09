@@ -160,21 +160,25 @@ NSString* const BleCommandNoMark = @"0";
     else if ([command isEqualToString:@"F7"]) {
         //外装シリアル番号読み出し
         self.whsDevice.exteriorSerialId = [stringFromData substringWithRange:NSMakeRange(4, 10)];
+        NSLog(@"exteriorSerialId: %@", self.whsDevice.exteriorSerialId);
         [self setCommandQue:BleCommandYesMark commandType:typeCommandExteriorRead];
     }
     else if ([command isEqualToString:@"F8"]) {
         //基板シリアル番号読み出し
         self.whsDevice.substrateSerialId = [stringFromData substringWithRange:NSMakeRange(4, 10)];
+        NSLog(@"substrateSerialId: %@", self.whsDevice.substrateSerialId);
         [self setCommandQue:BleCommandYesMark commandType:typeCommandSubstrateRead];
     }
     else if ([command isEqualToString:@"T5"]) {
         //メインフォームバージョン読み出し
         self.whsDevice.mainFarmVersion = [stringFromData substringWithRange:NSMakeRange(4, 6)];
+        NSLog(@"Firmware: %@", self.whsDevice.mainFarmVersion);
         [self setCommandQue:BleCommandYesMark commandType:typeCommandMainFarmRead];
     }
     else if ([command isEqualToString:@"R3"]) {
         //BLEファームバージョン読み出し
         self.whsDevice.bleFarmVersion = [stringFromData substringWithRange:NSMakeRange(4, 6)];
+        NSLog(@"BLE version: %@", self.whsDevice.bleFarmVersion);
         [self setCommandQue:BleCommandYesMark commandType:typeCommandBleFarmRead];
     }
 }

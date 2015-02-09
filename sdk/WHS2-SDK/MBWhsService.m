@@ -19,7 +19,10 @@ NSString* const KeyAccelerationValueXMinus = @"AccelerationMinusX";
 NSString* const KeyAccelerationValueYMinus = @"AccelerationMinusY";
 NSString* const KeyAccelerationValueZMinus = @"AccelerationMinusZ";
 NSString* const KeyEcgValue = @"Ecg";
+NSString* const KeySerialValue = @"Serial";
 NSString* const KeyTemperatureValue = @"Temperature";
+NSString* const KeyBatteryLevelValue = @"BatteryLevel";
+NSString* const KeyBatteryStatusValue = @"BatteryStatus";
 NSString* const KeyReceivedDate = @"ReceivedDate";
 
 @interface MBWhsService()
@@ -51,6 +54,9 @@ NSString* const KeyReceivedDate = @"ReceivedDate";
     
     _behaviorType = [MBLeConvert convertBehaviorMode:chars[1]];
     _accelerationType = [MBLeConvert convertAccelerationMode:chars[1]];
+    _batteryLevel = [MBLeConvert convertVoltageLevel:chars[1]];
+    _batteryType = [MBLeConvert convertVoltage:chars[1]];
+    _serial = [MBLeConvert convertSerial:chars[1]];
     
     //RSSIを読み込む
     [_peripheral readRSSI];

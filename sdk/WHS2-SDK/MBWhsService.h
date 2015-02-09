@@ -15,7 +15,10 @@ extern NSString* const KeyAccelerationValueXMinus;
 extern NSString* const KeyAccelerationValueYMinus;
 extern NSString* const KeyAccelerationValueZMinus;
 extern NSString* const KeyEcgValue;
+extern NSString* const KeySerialValue;
 extern NSString* const KeyTemperatureValue;
+extern NSString* const KeyBatteryLevelValue;
+extern NSString* const KeyBatteryStatusValue;
 extern NSString* const KeyReceivedDate;
 
 typedef NS_ENUM(NSInteger, BleStatus) {
@@ -48,6 +51,11 @@ typedef NS_ENUM(NSInteger, BehaviorType) {
     typeBehaviorRri = 1,
 };
 
+typedef NS_ENUM(NSInteger, BatteryType) {
+    typeBatteryNormal = 0,
+    typeBatteryLow = 1,
+};
+
 @interface MBWhsService : NSObject
 
 @property (nonatomic) CBPeripheral *peripheral;
@@ -57,7 +65,10 @@ typedef NS_ENUM(NSInteger, BehaviorType) {
 @property (nonatomic) NSArray *receivedDataDictionary;
 @property (nonatomic) NSDate *receivedDateTime;
 @property (nonatomic) NSData *receivedData;
+@property (nonatomic) NSString *serial;
 @property (nonatomic) BehaviorType behaviorType;
+@property (nonatomic) BatteryType batteryType;
+@property (nonatomic) NSInteger batteryLevel;
 @property (nonatomic) AccelerationType accelerationType;
 @property (nonatomic) id<MBMeasureReceiveProtocol> receiver;
 

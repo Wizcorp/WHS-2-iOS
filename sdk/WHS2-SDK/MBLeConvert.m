@@ -49,6 +49,11 @@
     return result;
 }
 
++ (NSString *)convertSerial:(unsigned char)byte{
+    signed char tmp = (signed char)byte;
+    return [NSString stringWithFormat:@"%c" , tmp];
+}
+
 + (double)convertTemperature:(unsigned char)byte0 char1:(unsigned char)byte1{
     double tmp = (byte0 << 8) + byte1;
     double result = tmp * 0.0625;

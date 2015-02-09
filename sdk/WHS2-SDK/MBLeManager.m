@@ -61,9 +61,10 @@
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MyBeatDidFindPeripherals" object:nil userInfo:@{ @"peripheral": peripheral }];
     if (![self.foundPeripherals containsObject:peripheral]){
         self.foundPeripheral = peripheral;
-		[self.foundPeripherals addObject:peripheral];
+        [self.foundPeripherals addObject:peripheral];
     }
 }
 

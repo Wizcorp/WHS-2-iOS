@@ -69,6 +69,9 @@ NSString* const KeyReceivedDate = @"ReceivedDate";
     }
     
     self.receivedDataDictionary = [_receiver getReceiveDatas];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MyBeatDidReceiveData"
+                                                        object:nil
+                                                      userInfo:@{ @"mode": [NSNumber numberWithInt:_behaviorType], @"data": self.receivedDataDictionary }];
 }
 
 - (id<MBMeasureReceiveProtocol>)createReceiverInstance:(NSData *)receivedData date:(NSDate *)date {
